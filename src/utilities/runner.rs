@@ -6,10 +6,9 @@ pub struct AocRunner;
 
 impl AocRunner {
     pub fn run<T: Display + Debug>(result: AocResult<T>, context: &str) {
-        if result.is_ok() {
-            println!("Success! {}{}", context, result.unwrap());
-        } else {
-            println!("Failure :( Error: {}", result.unwrap_err());
-        }
+        match result {
+            Ok(value) => println!("Success! {}{}", context, value),
+            Err(err) => println!("Failure :( Error: {}", err)
+        };
     }
 }
